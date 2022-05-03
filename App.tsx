@@ -1,14 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * Generated with the TypeScript template
- * https://github.com/react-native-community/react-native-template-typescript
- *
- * @format
- */
-
-import React from 'react';
+import axios from 'axios';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -18,6 +9,9 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import Config from 'react-native-config';
+import {getAuthors} from './src/services/authors.service';
+import {Author} from './src/types/authors.type';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,6 +19,24 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? '#333' : '#ccc',
   };
+
+  const [authors, setAuthors]: Author[] = useState([]);
+
+  const fetchAuthors = async () => {
+    try {
+      const res = await getAuthors();
+      if (res) {
+        setAuthors(res);
+        console.log(res);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchAuthors();
+  }, []);
 
   return (
     <SafeAreaView style={backgroundStyle}>
