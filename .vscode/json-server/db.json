@@ -1,6 +1,6 @@
 {
     "authors":[
-        {"id": 1, "name":"Pratchett" , "firstname":"Terry"}
+        {"id": 1, "lastname":"Pratchett" , "firstname":"Terry"}
     ],
     "books":[
         {"id":1, "authorId":1, "title":"Small Gods", "year":"1992"}
