@@ -1,5 +1,4 @@
-import axios from 'axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -9,9 +8,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Config from 'react-native-config';
-import AuthorList from './src/components/authors/AuthorList';
-import {getAuthors} from './src/services/authors.service';
 import {Author} from './src/types/authors.type';
 
 const App = () => {
@@ -21,42 +17,24 @@ const App = () => {
     backgroundColor: isDarkMode ? '#333' : '#ccc',
   };
 
-  const [authors, setAuthors] = useState<Array<Author>>([]);
-
-  const fetchAuthors = async () => {
-    try {
-      const res = await getAuthors();
-      if (res) {
-        setAuthors(res);
-        console.log(res);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
     console.log('Launched Version 0.1');
-    console.log(Config.API_URL);
-
-    fetchAuthors();
   }, []);
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? '#000' : '#fff',
-          }}>
-          <Text>Hello World</Text>
-          <AuthorList authors={authors} />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+      <SafeAreaView style={backgroundStyle}>
+        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={backgroundStyle}>
+          <View
+            style={{
+              backgroundColor: isDarkMode ? '#000' : '#fff',
+            }}>
+            <Text>Hello World</Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
   );
 };
 

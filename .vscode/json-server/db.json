@@ -1,8 +1,10 @@
 {
     "authors":[
-        {"id": 1, "lastname":"Pratchett" , "firstname":"Terry"}
+        {"id": 1, "lastname":"Pratchett" , "firstname":"Terry"},
+        {"id": 2, "lastname":"King" , "firstname":"Stephen"}
     ],
     "books":[
-        {"id":1, "authorId":1, "title":"Small Gods", "year":"1992"}
+        {"id":1, "authorId":1, "title":"Small Gods", "year":"1992"},
+        {"id":2, "authorId":2, "title":"Carrie", "year":"1974"}
     ]
 }
