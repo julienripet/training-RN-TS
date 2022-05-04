@@ -10,6 +10,7 @@ import {
   View,
 } from 'react-native';
 import Config from 'react-native-config';
+import AuthorList from './src/components/authors/AuthorList';
 import {getAuthors} from './src/services/authors.service';
 import {Author} from './src/types/authors.type';
 
@@ -20,7 +21,7 @@ const App = () => {
     backgroundColor: isDarkMode ? '#333' : '#ccc',
   };
 
-  const [authors, setAuthors]: Author[] = useState([]);
+  const [authors, setAuthors] = useState<Array<Author>>([]);
 
   const fetchAuthors = async () => {
     try {
@@ -52,6 +53,7 @@ const App = () => {
             backgroundColor: isDarkMode ? '#000' : '#fff',
           }}>
           <Text>Hello World</Text>
+          <AuthorList authors={authors} />
         </View>
       </ScrollView>
     </SafeAreaView>
