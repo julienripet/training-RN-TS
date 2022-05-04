@@ -7,7 +7,7 @@ export default function AuthorList({authors}: {authors: Array<Author>}) {
   return (
     <View style={styles.root}>
       {authors.map((author: Author) => (
-        <AuthorItem author={author} />
+        <AuthorItem author={author} key={author.id.toString()} />
       ))}
     </View>
   );

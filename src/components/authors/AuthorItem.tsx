@@ -1,5 +1,5 @@
 import {Text, StyleSheet, View} from 'react-native';
-import React, {Component} from 'react';
+import React from 'react';
 import {Author} from '../../types/authors.type';
 
 export default function AuthorItem({author}: {author: Author}) {

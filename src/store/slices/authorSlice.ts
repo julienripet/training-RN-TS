@@ -2,11 +2,11 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {Author} from '../../types/authors.type';
 
 export interface AuthorState {
-  authors: Author[];
+  list: Author[];
 }
 
 const initialState: AuthorState = {
-  authors: [],
+  list: [],
 };
 
 export const authorSlice = createSlice({
@@ -14,7 +14,7 @@ export const authorSlice = createSlice({
   initialState,
   reducers: {
     updateAuthorsList: (state, action: PayloadAction<Array<Author>>) => {
-      state.authors = action.payload;
+      state.list = action.payload;
     },
   },
 });

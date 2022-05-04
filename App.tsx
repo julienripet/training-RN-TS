@@ -10,10 +10,15 @@ import {
 } from 'react-native';
 import {Author} from './src/types/authors.type';
 
-import {store} from './src/store/store';
-import {Provider} from 'react-redux';
+import {RootState} from './src/store/store';
+import {useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
+import {updateAuthorsList} from './src/store/slices/authorSlice';
+import AuthorList from './src/components/authors/AuthorList';
 
 const App = () => {
+  const authors = useSelector((state: RootState) => state.author.list);
+  const dispatch = useDispatch();
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
@@ -22,24 +27,32 @@ const App = () => {
 
   useEffect(() => {
     console.log('Launched Version 0.1');
+    dispatch(
+      updateAuthorsList([
+        {
+          id: 1,
+          firstname: 'john',
+          lastname: 'doe',
+        },
+      ]),
+    );
   }, []);
 
   return (
-    <Provider store={store}>
-      <SafeAreaView style={backgroundStyle}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={backgroundStyle}>
-          <View
-            style={{
-              backgroundColor: isDarkMode ? '#000' : '#fff',
-            }}>
-            <Text>Hello World</Text>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </Provider>
+    <SafeAreaView style={backgroundStyle}>
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <ScrollView
+        contentInsetAdjustmentBehavior="automatic"
+        style={backgroundStyle}>
+        <View
+          style={{
+            backgroundColor: isDarkMode ? '#000' : '#fff',
+          }}>
+          <Text>Hello World</Text>
+          <AuthorList authors={authors} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
