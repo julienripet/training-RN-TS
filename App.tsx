@@ -8,13 +8,12 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {Author} from './src/types/authors.type';
 
 import {RootState} from './src/store/store';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
-import {updateAuthorsList} from './src/store/slices/authorSlice';
 import AuthorList from './src/components/authors/AuthorList';
+import authorSlice, {fetchAuthors} from './src/store/slices/authorSlice';
 
 const App = () => {
   const authors = useSelector((state: RootState) => state.author.list);
@@ -27,15 +26,7 @@ const App = () => {
 
   useEffect(() => {
     console.log('Launched Version 0.1');
-    dispatch(
-      updateAuthorsList([
-        {
-          id: 1,
-          firstname: 'john',
-          lastname: 'doe',
-        },
-      ]),
-    );
+    dispatch(fetchAuthors());
   }, []);
 
   return (
