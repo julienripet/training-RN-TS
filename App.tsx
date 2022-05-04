@@ -35,6 +35,9 @@ const App = () => {
   };
 
   useEffect(() => {
+    console.log('Launched Version 0.1');
+    console.log(Config.API_URL);
+
     fetchAuthors();
   }, []);
 
