@@ -7,7 +7,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-
+import {NavigationContainer} from '@react-navigation/native';
 import * as eva from '@eva-design/eva';
 import {
   ApplicationProvider,
@@ -42,7 +42,7 @@ const App = () => {
   }, []);
 
   return (
-    <>
+    <NavigationContainer>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={isDarkMode ? eva.dark : eva.light}>
         <SafeAreaView style={{...backgroundStyle, ...styles.root}}>
@@ -57,7 +57,7 @@ const App = () => {
           </ScrollView>
         </SafeAreaView>
       </ApplicationProvider>
-    </>
+    </NavigationContainer>
   );
 };
 
