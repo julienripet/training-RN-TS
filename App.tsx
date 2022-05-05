@@ -14,23 +14,15 @@ import {
 } from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 
-import {fetchAuthors} from './src/store/slices/authorSlice';
-import {useAppDispatch} from './src/store/hooks';
 import MainNavigator from './src/navigator/MainNavigator';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const dispatch = useAppDispatch();
-
   const backgroundStyle = {
     backgroundColor: isDarkMode ? '#333' : '#ccc',
   };
 
-  useEffect(() => {
-    console.log('Launched Version 0.1');
-    dispatch(fetchAuthors());
-  }, []);
   return (
     <NavigationContainer>
       <IconRegistry icons={EvaIconsPack} />

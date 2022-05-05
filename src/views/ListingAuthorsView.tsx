@@ -1,36 +1,40 @@
-import {ScrollView, StyleSheet, useColorScheme, View} from 'react-native';
-import React from 'react';
-import {useAppSelector} from '../store/hooks';
+import {StyleSheet} from 'react-native';
+import React, {useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from '../store/hooks';
 import AuthorList from '../components/authors/AuthorList';
-import {Text} from '@ui-kitten/components';
+import {Card, Layout, Spinner, Text} from '@ui-kitten/components';
+import {fetchAuthors} from '../store/slices/authorSlice';
 
 const ListingAuthorsView = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const dispatch = useAppDispatch();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? '#333' : '#ccc',
-  };
-
-  const reactiveStyles = StyleSheet.create({
-    body: {
-      backgroundColor: isDarkMode ? '#000' : '#fff',
-    },
-  });
+  useEffect(() => {
+    console.log('Launched Version 0.1');
+    setTimeout(() => {
+      dispatch(fetchAuthors());
+    }, 3500);
+  }, [dispatch]);
 
   const authors = useAppSelector(state => state.author.list);
+  const loadingAuthors = useAppSelector(state => state.author.loading);
 
   return (
-    <ScrollView
-      contentInsetAdjustmentBehavior="automatic"
-      style={backgroundStyle}>
-      <View style={reactiveStyles.body}>
+    <Layout style={styles.background}>
+      <Layout style={styles.body}>
         <Text>Hello World</Text>
-        <AuthorList authors={authors} />
-      </View>
-    </ScrollView>
+        {loadingAuthors ? <Spinner /> : <AuthorList authors={authors} />}
+      </Layout>
+    </Layout>
   );
 };
 
 export default ListingAuthorsView;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  background: {
+    flex: 1,
+  },
+  body: {
+    padding: 10,
+  },
+});

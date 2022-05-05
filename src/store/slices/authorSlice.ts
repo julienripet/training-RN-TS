@@ -15,7 +15,7 @@ export interface AuthorState {
 
 const initialState: AuthorState = {
   list: [],
-  loading: false,
+  loading: true,
   error: null,
 };
 
