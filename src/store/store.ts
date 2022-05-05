@@ -1,10 +1,18 @@
 import {configureStore} from '@reduxjs/toolkit';
+import logger from './middleware/logger';
+import thunkMiddleware from 'redux-thunk';
 import authorReducer from './slices/authorSlice';
+import monitorReducersEnhancer from './enhancers/monitorReducer';
 
 export const store = configureStore({
   reducer: {
     author: authorReducer,
   },
+
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware().concat(logger, thunkMiddleware),
+  enhancers: [monitorReducersEnhancer],
+  devTools: true,
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
