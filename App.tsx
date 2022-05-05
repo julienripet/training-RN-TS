@@ -9,16 +9,20 @@ import {
   View,
 } from 'react-native';
 
-import {RootState} from './src/store/store';
-import {useDispatch} from 'react-redux';
-import {useSelector} from 'react-redux';
 import AuthorList from './src/components/authors/AuthorList';
-import authorSlice, {fetchAuthors} from './src/store/slices/authorSlice';
+import {fetchAuthors} from './src/store/slices/authorSlice';
+import {useAppDispatch, useAppSelector} from './src/store/hooks';
 
 const App = () => {
-  const authors = useSelector((state: RootState) => state.author.list);
-  const dispatch = useDispatch();
   const isDarkMode = useColorScheme() === 'dark';
+  const reactiveStyles = StyleSheet.create({
+    body: {
+      backgroundColor: isDarkMode ? '#000' : '#fff',
+    },
+  });
+
+  const authors = useAppSelector(state => state.author.list);
+  const dispatch = useAppDispatch();
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? '#333' : '#ccc',
@@ -35,10 +39,7 @@ const App = () => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? '#000' : '#fff',
-          }}>
+        <View style={reactiveStyles.body}>
           <Text>Hello World</Text>
           <AuthorList authors={authors} />
         </View>
@@ -47,23 +48,7 @@ const App = () => {
   );
 };
 
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+// const styles = StyleSheet.create({
+// });
 
 export default App;
