@@ -7,7 +7,11 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import * as eva from '@eva-design/eva';
-import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
+import {
+  ApplicationProvider,
+  IconRegistry,
+  TopNavigation,
+} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 
 import {fetchAuthors} from './src/store/slices/authorSlice';
@@ -27,13 +31,13 @@ const App: React.FC = () => {
     console.log('Launched Version 0.1');
     dispatch(fetchAuthors());
   }, []);
-
   return (
     <NavigationContainer>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={isDarkMode ? eva.dark : eva.light}>
         <SafeAreaView style={{...backgroundStyle, ...styles.root}}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+          <TopNavigation title="MyApp" alignment="center" />
           <MainNavigator />
         </SafeAreaView>
       </ApplicationProvider>

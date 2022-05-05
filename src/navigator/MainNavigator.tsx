@@ -7,7 +7,7 @@ const Stack = createNativeStackNavigator();
 
 const MainNavigator = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="Authors" component={ListingAuthorsView} />
     </Stack.Navigator>
   );
