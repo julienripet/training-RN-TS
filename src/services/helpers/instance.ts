@@ -7,6 +7,8 @@ const instance = axios.create({
   baseURL: Config.API_URL,
 });
 
+instance.defaults.timeout = 2500;
+
 instance.interceptors.request.use(requestHandler, errorHandler);
 instance.interceptors.response.use(responseHandler, errorHandler);
 

@@ -7,5 +7,5 @@ export function errorHandler(error: any) {
     return Promise.reject(error.response.data);
   }
 
-  return Promise.reject(error);
+  return Promise.reject(error.code);
 }
