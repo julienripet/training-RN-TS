@@ -1,8 +1,9 @@
-import {StyleSheet, View} from 'react-native';
+import {Image, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
 import {Layout, Spinner, Text} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
-import {fetchAuthorById} from '../store/slices/authorSlice';
+import authorSlice, {fetchAuthorById} from '../store/slices/authorSlice';
+import AuthorDetails from '../components/authors/AuthorDetails';
 
 const DetailedAuthorView = ({route}) => {
   const detailedAuthor = useAppSelector(state => state.author.detailedAuthor);
@@ -15,16 +16,13 @@ const DetailedAuthorView = ({route}) => {
 
   if (detailedAuthor && !loadingAuthor) {
     return (
-      <Layout>
-        <Text category="h1">
-          {detailedAuthor.firstname} {detailedAuthor.lastname}
-        </Text>
-        <Text category="c1">{detailedAuthor.description} </Text>
+      <Layout style={styles.root}>
+        <AuthorDetails detailedAuthor={detailedAuthor} />
       </Layout>
     );
   } else {
     return (
-      <Layout>
+      <Layout style={styles.root}>
         <Spinner />
       </Layout>
     );
@@ -33,4 +31,9 @@ const DetailedAuthorView = ({route}) => {
 
 export default DetailedAuthorView;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    padding: 5,
+  },
+});
