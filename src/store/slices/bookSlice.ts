@@ -4,7 +4,7 @@ import {
   PayloadAction,
   SerializedError,
 } from '@reduxjs/toolkit';
-import {getBooksByAuthorId} from '../../services/books.service';
+import {getBookById, getBooksByAuthorId} from '../../services/books.service';
 import {Book} from '../../types/books.type';
 
 export interface BookState {
@@ -22,10 +22,21 @@ const initialState: BookState = {
 };
 
 export const fetchBooksByAuthorId = createAsyncThunk(
-  'books/fetchById',
+  'books/fetchByAuthorId',
   async (id: Number, {rejectWithValue}) => {
     try {
       const res = await getBooksByAuthorId(id);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
+export const fetchBookById = createAsyncThunk(
+  'books/fetchById',
+  async (id: Number, {rejectWithValue}) => {
+    try {
+      const res = await getBookById(id);
       return res;
     } catch (error) {
       return rejectWithValue(error);
@@ -52,6 +63,19 @@ export const bookSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(fetchBooksByAuthorId.rejected, (state, action) => {
+      state.error = action.error;
+      state.loading = false;
+    });
+    builder.addCase(fetchBookById.pending, state => {
+      state.loading = true;
+      state.detailedBook = null;
+      state.error = null;
+    });
+    builder.addCase(fetchBookById.fulfilled, (state, action) => {
+      state.detailedBook = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(fetchBookById.rejected, (state, action) => {
       state.error = action.error;
       state.loading = false;
     });
