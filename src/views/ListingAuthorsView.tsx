@@ -21,7 +21,6 @@ const ListingAuthorsView = () => {
   return (
     <Layout style={styles.background}>
       <Layout style={styles.body}>
-        <Text>Hello World</Text>
         {loadingAuthors ? <Spinner /> : <AuthorList authors={authors} />}
       </Layout>
     </Layout>
