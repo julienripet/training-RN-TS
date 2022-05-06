@@ -76,13 +76,15 @@
             "id":1,
             "authorId":1,
             "title":"Small Gods",
-            "year":"1992"
+            "year":"1992",
+            "coverPicUrl":"https://images-na.ssl-images-amazon.com/images/I/915Lf3hLCKL.jpg"
         },
         {
             "id":2,
             "authorId":2,
             "title":"Carrie",
-            "year":"1974"
+            "year":"1974",
+            "coverPicUrl":"https://www.livredepoche.com/sites/default/files/images/livres/couv/9782253096764-001-T.jpeg"
         }
     ]
 }

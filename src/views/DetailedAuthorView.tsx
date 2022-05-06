@@ -1,23 +1,28 @@
 import {Image, StyleSheet, View} from 'react-native';
 import React, {useEffect} from 'react';
-import {Layout, Spinner, Text} from '@ui-kitten/components';
+import {Layout, List, Spinner, Text} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
-import authorSlice, {fetchAuthorById} from '../store/slices/authorSlice';
+import {fetchAuthorById} from '../store/slices/authorSlice';
 import AuthorDetails from '../components/authors/AuthorDetails';
+import BookList from '../components/books/BookList';
+import {fetchBooksByAuthorId} from '../store/slices/bookSlice';
 
 const DetailedAuthorView = ({route}) => {
   const detailedAuthor = useAppSelector(state => state.author.detailedAuthor);
   const loadingAuthor = useAppSelector(state => state.author.loading);
+  const authorsBooks = useAppSelector(state => state.book.list);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(fetchAuthorById(route.params.id));
+    dispatch(fetchBooksByAuthorId(route.params.id));
   }, []);
 
   if (detailedAuthor && !loadingAuthor) {
     return (
       <Layout style={styles.root}>
         <AuthorDetails detailedAuthor={detailedAuthor} />
+        <BookList authorsBooks={authorsBooks} />
       </Layout>
     );
   } else {

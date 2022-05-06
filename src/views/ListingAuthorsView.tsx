@@ -10,9 +10,7 @@ const ListingAuthorsView = () => {
 
   useEffect(() => {
     console.log('Launched Version 0.1');
-    setTimeout(() => {
-      dispatch(fetchAuthors());
-    }, 3500);
+    dispatch(fetchAuthors());
   }, [dispatch]);
 
   const authors = useAppSelector(state => state.author.list);

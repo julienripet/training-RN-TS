@@ -3,10 +3,12 @@ import logger from './middleware/logger';
 import thunkMiddleware from 'redux-thunk';
 import authorReducer from './slices/authorSlice';
 import monitorReducersEnhancer from './enhancers/monitorReducer';
+import bookReducer from './slices/bookSlice';
 
 export const store = configureStore({
   reducer: {
     author: authorReducer,
+    book: bookReducer,
   },
 
   middleware: getDefaultMiddleware =>

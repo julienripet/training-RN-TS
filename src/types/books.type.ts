@@ -3,4 +3,5 @@ export type Book = {
   authorId: Number;
   title: String;
   year: String;
+  coverPicUrl: String;
 };
