@@ -1,7 +1,7 @@
-import {StyleSheet, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {Author} from '../../types/authors.type';
-import {Card} from '@ui-kitten/components';
+import {Avatar, Card, Text} from '@ui-kitten/components';
 import {NavigationProp, useNavigation} from '@react-navigation/native';
 
 export default function AuthorItem({author}: {author: Author}) {
@@ -12,13 +12,26 @@ export default function AuthorItem({author}: {author: Author}) {
 
   return (
     <Card style={styles.root} onPress={goToAuthorPage}>
-      <Text>
-        {author.firstname} {author.lastname}
-      </Text>
+      <View style={styles.container}>
+        <Avatar source={{uri: author.picUrl}} />
+        <Text style={styles.name}>
+          {author.firstname} {author.lastname}
+        </Text>
+      </View>
     </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  root: {},
+  root: {
+    padding: 0,
+    marginVertical: 5,
+  },
+  container: {
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  name: {
+    marginLeft: 10,
+  },
 });

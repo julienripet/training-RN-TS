@@ -12,11 +12,7 @@ export default function AuthorList({authors}: {authors: Array<Author>}) {
   return (
     <Layout style={styles.root}>
       {authors?.length > 0 ? (
-        <List
-          data={authors}
-          renderItem={renderItem}
-          ItemSeparatorComponent={Divider}
-        />
+        <List data={authors} renderItem={renderItem} />
       ) : (
         <Text>No authors </Text>
       )}
