@@ -22,7 +22,7 @@ const DetailedAuthorView = ({route}) => {
   if (detailedAuthor && !loadingAuthor) {
     return (
       <Layout style={styles.root}>
-        <CustomTopNavigation title="Details" goBackBtn={true}/>
+        <CustomTopNavigation title="Details" goBackBtn={true} />
         <AuthorDetails detailedAuthor={detailedAuthor} />
         <BookList authorsBooks={authorsBooks} />
       </Layout>
@@ -30,7 +30,7 @@ const DetailedAuthorView = ({route}) => {
   } else {
     return (
       <Layout style={styles.root}>
-        <CustomTopNavigation title="Details" goBackBtn={true}/>
+        <CustomTopNavigation title="Details" goBackBtn={true} />
         <Spinner />
       </Layout>
     );

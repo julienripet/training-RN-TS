@@ -1,7 +1,7 @@
 export type Author = {
-  readonly id: Number;
-  lastname: String;
-  firstname: String;
-  picUrl: String;
-  description: String;
+  readonly id?: number;
+  lastname: string;
+  firstname: string;
+  picUrl?: string;
+  description: string;
 };
