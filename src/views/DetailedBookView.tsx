@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {Layout, Spinner, Text} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {fetchBookById} from '../store/slices/bookSlice';
+import CustomTopNavigation from '../components/common/CustomTopNavigation';
 
 const DetailedBookView = ({route}) => {
   const dispatch = useAppDispatch();
@@ -15,16 +16,22 @@ const DetailedBookView = ({route}) => {
 
   if (book && !loading) {
     return (
-      <Layout>
-        <Image source={{uri: book?.coverPicUrl}} style={styles.coverPic} />
-        <Text>{book.title}</Text>
-      </Layout>
+      <>
+        <CustomTopNavigation title={"Book's details"} goBackBtn={true} />
+        <Layout style={styles.root}>
+          <Image source={{uri: book?.coverPicUrl}} style={styles.coverPic} />
+          <Text>{book.title}</Text>
+        </Layout>
+      </>
     );
   } else {
     return (
-      <Layout>
-        <Spinner />
-      </Layout>
+      <>
+        <CustomTopNavigation title={"Book's details"} goBackBtn={true} />
+        <Layout style={styles.root}>
+          <Spinner />
+        </Layout>
+      </>
     );
   }
 };
@@ -32,6 +39,9 @@ const DetailedBookView = ({route}) => {
 export default DetailedBookView;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
   coverPic: {
     height: 120,
     width: 80,

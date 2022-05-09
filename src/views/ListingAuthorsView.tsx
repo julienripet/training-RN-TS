@@ -4,6 +4,8 @@ import {useAppDispatch, useAppSelector} from '../store/hooks';
 import AuthorList from '../components/authors/AuthorList';
 import {Card, Layout, Spinner, Text} from '@ui-kitten/components';
 import {fetchAuthors} from '../store/slices/authorSlice';
+import {fetchBooksByAuthorId} from '../store/slices/bookSlice';
+import CustomTopNavigation from '../components/common/CustomTopNavigation';
 
 const ListingAuthorsView = () => {
   const dispatch = useAppDispatch();
@@ -17,11 +19,14 @@ const ListingAuthorsView = () => {
   const loadingAuthors = useAppSelector(state => state.author.loading);
 
   return (
-    <Layout style={styles.background}>
-      <Layout style={styles.body}>
-        {loadingAuthors ? <Spinner /> : <AuthorList authors={authors} />}
+    <>
+      <CustomTopNavigation title="Authors" goBackBtn={false} />
+      <Layout style={styles.background}>
+        <Layout style={styles.body}>
+          {loadingAuthors ? <Spinner /> : <AuthorList authors={authors} />}
+        </Layout>
       </Layout>
-    </Layout>
+    </>
   );
 };
 

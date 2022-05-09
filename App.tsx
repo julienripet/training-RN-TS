@@ -29,7 +29,6 @@ const App: React.FC = () => {
       <ApplicationProvider {...eva} theme={isDarkMode ? eva.dark : eva.light}>
         <SafeAreaView style={{...backgroundStyle, ...styles.root}}>
           <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <TopNavigation title="MyApp" alignment="center" />
           <MainNavigator />
         </SafeAreaView>
       </ApplicationProvider>

@@ -6,6 +6,7 @@ import {fetchAuthorById} from '../store/slices/authorSlice';
 import AuthorDetails from '../components/authors/AuthorDetails';
 import BookList from '../components/books/BookList';
 import {fetchBooksByAuthorId} from '../store/slices/bookSlice';
+import CustomTopNavigation from '../components/common/CustomTopNavigation';
 
 const DetailedAuthorView = ({route}) => {
   const detailedAuthor = useAppSelector(state => state.author.detailedAuthor);
@@ -21,6 +22,7 @@ const DetailedAuthorView = ({route}) => {
   if (detailedAuthor && !loadingAuthor) {
     return (
       <Layout style={styles.root}>
+        <CustomTopNavigation title="Details" goBackBtn={true}/>
         <AuthorDetails detailedAuthor={detailedAuthor} />
         <BookList authorsBooks={authorsBooks} />
       </Layout>
@@ -28,6 +30,7 @@ const DetailedAuthorView = ({route}) => {
   } else {
     return (
       <Layout style={styles.root}>
+        <CustomTopNavigation title="Details" goBackBtn={true}/>
         <Spinner />
       </Layout>
     );
