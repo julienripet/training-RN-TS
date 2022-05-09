@@ -17,7 +17,7 @@
     {
       "id": 3,
       "lastname": "Pratchett",
-      "firstname": "Terry",
+      "firstname": "Terry 2",
       "picUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/10.12.12TerryPratchettByLuigiNovi1.jpg",
       "description": "Sir Terence David John Pratchett OBE (28 April 1948 – 12 March 2015) was an English humourist, satirist, and author of fantasy novels, especially comical works. He is best known for his Discworld series of 41 novels. Pratchett's first novel, The Carpet People, was published in 1971. The first Discworld novel, The Colour of Magic, was published in 1983, after which Pratchett wrote an average of two books a year. The final Discworld novel, The Shepherd's Crown, was published in August 2015, five months after his death. Pratchett, with more than 85 million books sold worldwide in 37 languages, was the UK's best-selling author of the 1990s. He was appointed Officer of the Order of the British Empire (OBE) in 1998 and was knighted for services to literature in the 2009 New Year Honours. In 2001 he won the annual Carnegie Medal for The Amazing Maurice and his Educated Rodents, the first Discworld book marketed for children. He received the World Fantasy Award for Life Achievement in 2010. In December 2007, Pratchett announced that he had been diagnosed with early-onset Alzheimer's disease. He later made a substantial public donation to the Alzheimer's Research Trust, filmed a television programme chronicling his experiences with the condition for the BBC, and became a patron for Alzheimer's Research UK. Pratchett died on 12 March 2015, aged 66. "
     },
@@ -69,6 +69,20 @@
       "firstname": "Stephen",
       "picUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Stephen_King%2C_Comicon.jpg",
       "description": "Stephen Edwin King (born September 21, 1947) is an American author of horror, supernatural fiction, suspense, crime, science-fiction, and fantasy novels. Described as the \"King of Horror\", a play on his surname and a reference to his high standing in pop culture, his books have sold more than 350 million copies, and many have been adapted into films, television series, miniseries, and comic books. King has published 64 novels, including seven under the pen name Richard Bachman, and five non-fiction books. He has also written approximately 200 short stories, most of which have been published in book collections. King has received Bram Stoker Awards, World Fantasy Awards, and British Fantasy Society Awards. In 2003, the National Book Foundation awarded him the Medal for Distinguished Contribution to American Letters. He has also received awards for his contribution to literature for his entire bibliography, such as the 2004 World Fantasy Award for Life Achievement and the 2007 Grand Master Award from the Mystery Writers of America. In 2015, he was awarded with a National Medal of Arts from the U.S. National Endowment for the Arts for his contributions to literature. "
+    },
+    {
+      "firstname": "Alexandre",
+      "lastname": "Pope",
+      "description": "Alexander Pope (21 May 1688 – 30 May 1744) was an English poet, translator, and satirist of the Augustan period and one of its greatest artistic exponents. Considered the foremost English poet of the early 18th century and a master of the heroic couplet, he is best known for satirical and discursive poetry, including The Rape of the Lock, The Dunciad, and An Essay on Criticism, and for his translation of Homer. After Shakespeare, he is the second-most quoted author in The Oxford Dictionary of Quotations, some of his verses having entered common parlance (e.g. \"damning with faint praise\" or \"to err is human; to forgive, divine\"). ",
+      "picUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Alexander_Pope_by_Michael_Dahl.jpg",
+      "id": 11
+    },
+    {
+      "firstname": "Test",
+      "lastname": "Test",
+      "description": "Test",
+      "picUrl": "",
+      "id": 12
     }
   ],
   "books": [

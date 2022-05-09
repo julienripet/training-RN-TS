@@ -3,31 +3,19 @@ import {
   StyleSheet,
   TextInputChangeEventData,
 } from 'react-native';
-import React, {Dispatch, useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import {Author} from '../../types/authors.type';
 import {Input, Layout, Text} from '@ui-kitten/components';
 
 const AuthorForm = ({
-  authorEdit,
   setIsValidAuthor,
+  author,
+  setAuthor,
 }: {
-  authorEdit: Author | undefined;
   setIsValidAuthor: Function;
+  author: Author;
+  setAuthor: Dispatch<SetStateAction<Author>>;
 }) => {
-  const [author, setAuthor]: [
-    author: Author,
-    setAuthor: Dispatch<React.SetStateAction<Author>>,
-  ] = useState(
-    authorEdit
-      ? authorEdit
-      : {
-          firstname: '',
-          lastname: '',
-          description: '',
-          picUrl: '',
-        },
-  );
-
   const updateAuthor = (text: string, field: string) => {
     setAuthor({...author, [field]: text});
   };
@@ -41,8 +29,9 @@ const AuthorForm = ({
   }, [author]);
 
   return (
-    <Layout>
+    <Layout style={styles.root}>
       <Input
+        style={styles.inputs}
         label={evaProps => <Text {...evaProps}> First Name* :</Text>}
         value={author.firstname}
         onChangeText={text => {
@@ -50,6 +39,7 @@ const AuthorForm = ({
         }}
       />
       <Input
+        style={styles.inputs}
         label={evaProps => <Text {...evaProps}> Last Name* :</Text>}
         value={author.lastname}
         onChangeText={text => {
@@ -57,6 +47,7 @@ const AuthorForm = ({
         }}
       />
       <Input
+        style={styles.inputs}
         label={evaProps => <Text {...evaProps}> Description* :</Text>}
         value={author.description}
         multiline={true}
@@ -66,6 +57,7 @@ const AuthorForm = ({
         }}
       />
       <Input
+        style={styles.inputs}
         label={evaProps => <Text {...evaProps}> Picture URL :</Text>}
         value={author.picUrl}
         placeholder="https://..."
@@ -79,4 +71,10 @@ const AuthorForm = ({
 
 export default AuthorForm;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    padding: 10,
+  },
+  inputs: {marginVertical: 10},
+});

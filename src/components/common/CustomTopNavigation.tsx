@@ -1,16 +1,14 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React, {ReactNode} from 'react';
+// import {StyleSheet} from 'react-native';
+import React from 'react';
 import {Icon, TopNavigation, TopNavigationAction} from '@ui-kitten/components';
 import {useNavigation} from '@react-navigation/native';
-
-const BackIcon = () => <Icon name="arrow-back" />;
 
 const CustomTopNavigation = ({
   title,
   goBackBtn,
   renderRightActions,
 }: {
-  title: String;
+  title: string;
   goBackBtn: Boolean | undefined;
   renderRightActions?: JSX.Element | undefined;
 }) => {
@@ -20,7 +18,10 @@ const CustomTopNavigation = ({
   };
 
   const BackAction = () => (
-    <TopNavigationAction icon={BackIcon} onPress={navigateBack} />
+    <TopNavigationAction
+      icon={<Icon name="arrow-back" />}
+      onPress={navigateBack}
+    />
   );
   return (
     <TopNavigation
@@ -34,4 +35,4 @@ const CustomTopNavigation = ({
 
 export default CustomTopNavigation;
 
-const styles = StyleSheet.create({});
+// const styles = StyleSheet.create({});
