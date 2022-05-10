@@ -5,9 +5,11 @@ import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import AuthorForm from '../components/authors/AuthorForm';
 import {postAuthor, putAuthor} from '../services/authors.service';
 import {useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 const CreaditAuthorView = ({route}) => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const validateAuthor = async () => {
     try {
@@ -20,7 +22,7 @@ const CreaditAuthorView = ({route}) => {
       console.log('res :', JSON.stringify(res, null, 4));
       navigation.navigate('AuthorsList');
     } catch (error) {
-      Alert.alert('An error has occurred');
+      Alert.alert(t('common.error'));
     }
   };
   const [isValidAuthor, setIsValidAuthor] = useState(false);
@@ -39,7 +41,7 @@ const CreaditAuthorView = ({route}) => {
   return (
     <Layout style={styles.root}>
       <CustomTopNavigation
-        title="Authors"
+        title={t('author.authors')}
         goBackBtn={true}
         renderRightActions={
           <TopNavigationAction

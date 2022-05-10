@@ -11,10 +11,12 @@ import {
 import {fetchAuthors} from '../store/slices/authorSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 const ListingAuthorsView = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -33,7 +35,7 @@ const ListingAuthorsView = () => {
   return (
     <>
       <CustomTopNavigation
-        title="Authors"
+        title={t('author.authors')}
         goBackBtn={false}
         renderRightActions={
           <TopNavigationAction

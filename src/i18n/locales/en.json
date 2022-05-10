@@ -4,6 +4,21 @@
     "firstname": "First Name* :",
     "lastname": "Last Name* :",
     "description": "Description* :",
-    "picture-url": "Picture URL :"
+    "picture-url": "Picture URL :",
+    "books": "Their Books:",
+    "none": "No authors",
+    "authors": "Authors"
+  },
+  "book": {
+    "title": "Title* :",
+    "summary": "Summary* :",
+    "cover-picture-url": "Cover Picture's URL* :",
+    "year": "Year of writing:",
+    "new-book": "New Book",
+    "details": "Book's details"
+  },
+  "common": {
+    "error": "An error has occurred",
+    "details": "Details"
   }
 }

@@ -6,9 +6,11 @@ import {useNavigation} from '@react-navigation/native';
 import {Book} from '../types/books.type';
 import BookForm from '../components/books/BookForm';
 import {postBook, putBook} from '../services/books.service';
+import {useTranslation} from 'react-i18next';
 
 const CreaditBookView = ({route}) => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const [isValidBook, setIsValidBook] = useState<Boolean>(false);
 
@@ -23,7 +25,7 @@ const CreaditBookView = ({route}) => {
       console.log('res :', JSON.stringify(res, null, 4));
       navigation.navigate('AuthorDetails', {id: route.params.authorId});
     } catch (error) {
-      Alert.alert('An error has occurred');
+      Alert.alert(t('common.error'));
     }
   };
 
@@ -42,7 +44,7 @@ const CreaditBookView = ({route}) => {
   return (
     <Layout style={styles.root}>
       <CustomTopNavigation
-        title="New Book"
+        title={t('book.new-book')}
         goBackBtn={true}
         renderRightActions={
           <TopNavigationAction

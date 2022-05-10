@@ -11,12 +11,14 @@ import {fetchBookById} from '../store/slices/bookSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
 import BookDetails from '../components/books/BookDetails';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import {useTranslation} from 'react-i18next';
 
 const DetailedBookView = ({route}) => {
   const dispatch = useAppDispatch();
   const book = useAppSelector(state => state.book.detailedBook);
   const loading = useAppSelector(state => state.book.loading);
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   useFocusEffect(
     useCallback(() => {
@@ -32,7 +34,7 @@ const DetailedBookView = ({route}) => {
     return (
       <Layout style={styles.root}>
         <CustomTopNavigation
-          title={"Book's details"}
+          title={t('book.details')}
           goBackBtn={true}
           renderRightActions={
             <TopNavigationAction
@@ -47,7 +49,7 @@ const DetailedBookView = ({route}) => {
   } else {
     return (
       <>
-        <CustomTopNavigation title={"Book's details"} goBackBtn={true} />
+        <CustomTopNavigation title={t('book.details')} goBackBtn={true} />
         <Layout style={styles.root}>
           <Spinner />
         </Layout>

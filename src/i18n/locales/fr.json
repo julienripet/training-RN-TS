@@ -4,6 +4,21 @@
     "firstname": "Prénom* :",
     "lastname": "Nom de famille* :",
     "description": "Description* :",
-    "picture-url": "Url de l'image :"
+    "picture-url": "Url de l'image :",
+    "books": "Leur livres :",
+    "none": "Pas d'auteur",
+    "authors": "Auteurs"
+  },
+  "book": {
+    "title": "Titre* :",
+    "summary": "Résumé* :",
+    "cover-picture-url": "Url de l'image de couverture* :",
+    "year": "Année d'écriture :",
+    "new-book": "Nouveau Livre",
+    "details": "Détails du livre"
+  },
+  "common": {
+    "error": "Une erreur est survenue",
+    "details": "Détails"
   }
 }
