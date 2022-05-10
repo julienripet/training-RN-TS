@@ -1,4 +1,4 @@
-import {Alert, StyleSheet, Text, View} from 'react-native';
+import {Alert, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';

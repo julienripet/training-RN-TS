@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet, Text, View} from 'react-native';
+import {ScrollView, StyleSheet, Text} from 'react-native';
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {Book} from '../../types/books.type';
 import {Input} from '@ui-kitten/components';
