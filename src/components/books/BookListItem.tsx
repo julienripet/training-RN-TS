@@ -11,7 +11,7 @@ const BookListItem = ({book}: {book: Book}) => {
     navigation.navigate('BookDetails', {id: book.id});
   };
   return (
-    <Card onPress={goToBookPage}>
+    <Card onPress={goToBookPage} style={styles.cards}>
       <Image source={{uri: book.coverPicUrl}} style={styles.coverPic} />
       <Text>{book.title}</Text>
     </Card>
@@ -24,5 +24,8 @@ const styles = StyleSheet.create({
   coverPic: {
     height: 120,
     width: 80,
+  },
+  cards: {
+    marginHorizontal: 5,
   },
 });
