@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import React, {Key} from 'react';
-import {Layout, List} from '@ui-kitten/components';
+import {Layout, List, Text} from '@ui-kitten/components';
 import {Book} from '../../types/books.type';
 import BookListItem from './BookListItem';
 
@@ -10,7 +10,10 @@ const BookList = ({authorsBooks}: {authorsBooks: Book[]}) => {
   );
 
   return (
-    <Layout>
+    <Layout style={styles.root}>
+      <Text category={'h5'} style={styles.title}>
+        Their Books:
+      </Text>
       <List data={authorsBooks} renderItem={renderItem} horizontal />
     </Layout>
   );
@@ -18,4 +21,11 @@ const BookList = ({authorsBooks}: {authorsBooks: Book[]}) => {
 
 export default BookList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  root: {
+    marginTop: 10,
+  },
+  title: {
+    marginBottom: 25,
+  },
+});

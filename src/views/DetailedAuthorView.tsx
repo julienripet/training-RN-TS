@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import React, {useCallback} from 'react';
 import {
   Icon,
@@ -34,7 +34,7 @@ const DetailedAuthorView = ({route}) => {
 
   if (detailedAuthor && !loadingAuthor) {
     return (
-      <>
+      <Layout style={styles.root}>
         <CustomTopNavigation
           title="Details"
           goBackBtn={true}
@@ -45,11 +45,11 @@ const DetailedAuthorView = ({route}) => {
             />
           }
         />
-        <Layout style={styles.root}>
+        <ScrollView>
           <AuthorDetails detailedAuthor={detailedAuthor} />
           <BookList authorsBooks={authorsBooks} />
-        </Layout>
-      </>
+        </ScrollView>
+      </Layout>
     );
   } else {
     return (

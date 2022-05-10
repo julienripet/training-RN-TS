@@ -1,7 +1,7 @@
-import {Alert, ScrollView, StyleSheet} from 'react-native';
+import {Alert, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
-import {Icon, TopNavigationAction} from '@ui-kitten/components';
+import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import AuthorForm from '../components/authors/AuthorForm';
 import {postAuthor, putAuthor} from '../services/authors.service';
 import {useNavigation} from '@react-navigation/native';
@@ -37,7 +37,7 @@ const CreaditAuthorView = ({route}) => {
   );
 
   return (
-    <ScrollView style={styles.root}>
+    <Layout style={styles.root}>
       <CustomTopNavigation
         title="Authors"
         goBackBtn={true}
@@ -54,7 +54,7 @@ const CreaditAuthorView = ({route}) => {
         author={author}
         setAuthor={setAuthor}
       />
-    </ScrollView>
+    </Layout>
   );
 };
 
@@ -63,5 +63,6 @@ export default CreaditAuthorView;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
+    paddingBottom: 20,
   },
 });

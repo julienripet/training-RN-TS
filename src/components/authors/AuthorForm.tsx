@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {Author} from '../../types/authors.type';
-import {Input, Layout, Text} from '@ui-kitten/components';
+import {Input, Text} from '@ui-kitten/components';
 
 const AuthorForm = ({
   setIsValidAuthor,
@@ -22,10 +22,10 @@ const AuthorForm = ({
         author.lastname !== '' &&
         author.description !== '',
     );
-  }, [author]);
+  }, [author, setIsValidAuthor]);
 
   return (
-    <Layout style={styles.root}>
+    <ScrollView style={styles.root}>
       <Input
         style={styles.inputs}
         label={evaProps => <Text {...evaProps}> First Name* :</Text>}
@@ -61,7 +61,7 @@ const AuthorForm = ({
           updateAuthor(text, 'picUrl');
         }}
       />
-    </Layout>
+    </ScrollView>
   );
 };
 

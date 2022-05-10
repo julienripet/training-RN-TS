@@ -1,4 +1,5 @@
 const round = number => Math.round(number * 100) / 100;
+const performance = global.performance;
 
 const monitorReducerEnhancer =
   createStore => (reducer, initialState, enhancer) => {
