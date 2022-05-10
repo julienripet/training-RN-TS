@@ -47,7 +47,7 @@ const DetailedAuthorView = ({route}) => {
         />
         <ScrollView>
           <AuthorDetails detailedAuthor={detailedAuthor} />
-          <BookList authorsBooks={authorsBooks} />
+          <BookList authorsBooks={authorsBooks} authorId={detailedAuthor.id} />
         </ScrollView>
       </Layout>
     );

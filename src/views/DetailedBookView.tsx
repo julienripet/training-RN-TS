@@ -1,16 +1,22 @@
 import {StyleSheet} from 'react-native';
 import React, {useCallback} from 'react';
-import {Layout, Spinner} from '@ui-kitten/components';
+import {
+  Icon,
+  Layout,
+  Spinner,
+  TopNavigationAction,
+} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {fetchBookById} from '../store/slices/bookSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
 import BookDetails from '../components/books/BookDetails';
-import {useFocusEffect} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 const DetailedBookView = ({route}) => {
   const dispatch = useAppDispatch();
   const book = useAppSelector(state => state.book.detailedBook);
   const loading = useAppSelector(state => state.book.loading);
+  const navigation = useNavigation();
 
   useFocusEffect(
     useCallback(() => {
@@ -18,10 +24,23 @@ const DetailedBookView = ({route}) => {
     }, [dispatch, route.params.id]),
   );
 
+  const goToEditBook = () => {
+    navigation.navigate('BookCreadit', {book: book, authorId: book.authorId});
+  };
+
   if (book && !loading) {
     return (
       <Layout style={styles.root}>
-        <CustomTopNavigation title={"Book's details"} goBackBtn={true} />
+        <CustomTopNavigation
+          title={"Book's details"}
+          goBackBtn={true}
+          renderRightActions={
+            <TopNavigationAction
+              icon={<Icon name="edit-outline" />}
+              onPress={goToEditBook}
+            />
+          }
+        />
         <BookDetails book={book} />
       </Layout>
     );

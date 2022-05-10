@@ -13,7 +13,7 @@ const BookListItem = ({book}: {book: Book}) => {
   return (
     <Card onPress={goToBookPage} style={styles.cards}>
       <Image source={{uri: book.coverPicUrl}} style={styles.coverPic} />
-      <Text>{book.title}</Text>
+      <Text style={styles.title}>{book.title}</Text>
     </Card>
   );
 };
@@ -25,7 +25,12 @@ const styles = StyleSheet.create({
     height: 120,
     width: 80,
   },
+  title: {
+    marginTop: 5,
+    textAlign: 'center',
+  },
   cards: {
     marginHorizontal: 5,
+    maxWidth: 140,
   },
 });

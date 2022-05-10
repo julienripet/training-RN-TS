@@ -4,6 +4,7 @@ import ListingAuthorsView from '../views/ListingAuthorsView';
 import DetailedAuthorView from '../views/DetailedAuthorView';
 import DetailedBookView from '../views/DetailedBookView';
 import CreaditAuthorView from '../views/CreaditAuthorView';
+import CreaditBookView from '../views/CreaditBookView';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const MainNavigator = () => {
       <Stack.Screen name="AuthorDetails" component={DetailedAuthorView} />
       <Stack.Screen name="AuthorCreadit" component={CreaditAuthorView} />
       <Stack.Screen name="BookDetails" component={DetailedBookView} />
+      <Stack.Screen name="BookCreadit" component={CreaditBookView} />
     </Stack.Navigator>
   );
 };
