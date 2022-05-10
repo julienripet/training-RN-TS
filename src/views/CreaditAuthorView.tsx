@@ -1,7 +1,7 @@
-import {Alert, ScrollView, StyleSheet, View} from 'react-native';
+import {Alert, ScrollView, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
-import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
+import {Icon, TopNavigationAction} from '@ui-kitten/components';
 import AuthorForm from '../components/authors/AuthorForm';
 import {postAuthor, putAuthor} from '../services/authors.service';
 import {useNavigation} from '@react-navigation/native';

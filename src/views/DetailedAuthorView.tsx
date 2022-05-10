@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
+import React, {useCallback} from 'react';
 import {
   Icon,
   Layout,
@@ -12,7 +12,7 @@ import AuthorDetails from '../components/authors/AuthorDetails';
 import BookList from '../components/books/BookList';
 import {fetchBooksByAuthorId} from '../store/slices/bookSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
-import {useNavigation} from '@react-navigation/native';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
 
 const DetailedAuthorView = ({route}) => {
   const detailedAuthor = useAppSelector(state => state.author.detailedAuthor);
@@ -21,10 +21,12 @@ const DetailedAuthorView = ({route}) => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
-  useEffect(() => {
-    dispatch(fetchAuthorById(route.params.id));
-    dispatch(fetchBooksByAuthorId(route.params.id));
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(fetchAuthorById(route.params.id));
+      dispatch(fetchBooksByAuthorId(route.params.id));
+    }, [dispatch, route.params.id]),
+  );
 
   const goToEditAuthor = () => {
     navigation.navigate('AuthorCreadit', {author: detailedAuthor});

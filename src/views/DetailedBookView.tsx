@@ -1,19 +1,22 @@
-import {Image, StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
-import {Layout, Spinner, Text} from '@ui-kitten/components';
+import {StyleSheet} from 'react-native';
+import React, {useCallback} from 'react';
+import {Layout, Spinner} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {fetchBookById} from '../store/slices/bookSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
 import BookDetails from '../components/books/BookDetails';
+import {useFocusEffect} from '@react-navigation/native';
 
 const DetailedBookView = ({route}) => {
   const dispatch = useAppDispatch();
   const book = useAppSelector(state => state.book.detailedBook);
   const loading = useAppSelector(state => state.book.loading);
 
-  useEffect(() => {
-    dispatch(fetchBookById(route.params.id));
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      dispatch(fetchBookById(route.params.id));
+    }, [dispatch, route.params.id]),
+  );
 
   if (book && !loading) {
     return (

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -7,11 +7,7 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import * as eva from '@eva-design/eva';
-import {
-  ApplicationProvider,
-  IconRegistry,
-  TopNavigation,
-} from '@ui-kitten/components';
+import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 
 import MainNavigator from './src/navigator/MainNavigator';

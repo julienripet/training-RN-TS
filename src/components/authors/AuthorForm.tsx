@@ -1,9 +1,5 @@
-import {
-  NativeSyntheticEvent,
-  StyleSheet,
-  TextInputChangeEventData,
-} from 'react-native';
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import {StyleSheet} from 'react-native';
+import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {Author} from '../../types/authors.type';
 import {Input, Layout, Text} from '@ui-kitten/components';
 
