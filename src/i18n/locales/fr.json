@@ -1,3 +1,9 @@
 {
-  "language": "Français"
+  "language": "Français",
+  "author": {
+    "firstname": "Prénom* :",
+    "lastname": "Nom de famille* :",
+    "description": "Description* :",
+    "picture-url": "Url de l'image :"
+  }
 }

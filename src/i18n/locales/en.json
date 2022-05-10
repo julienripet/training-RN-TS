@@ -1,3 +1,9 @@
 {
   "language": "English",
+  "author": {
+    "firstname": "First Name* :",
+    "lastname": "Last Name* :",
+    "description": "Description* :",
+    "picture-url": "Picture URL :"
+  }
 }

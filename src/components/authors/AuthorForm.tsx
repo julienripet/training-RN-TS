@@ -2,6 +2,7 @@ import {ScrollView, StyleSheet} from 'react-native';
 import React, {Dispatch, SetStateAction, useEffect} from 'react';
 import {Author} from '../../types/authors.type';
 import {Input, Text} from '@ui-kitten/components';
+import {useTranslation} from 'react-i18next';
 
 const AuthorForm = ({
   setIsValidAuthor,
@@ -16,6 +17,8 @@ const AuthorForm = ({
     setAuthor({...author, [field]: text});
   };
 
+  const {t} = useTranslation();
+
   useEffect(() => {
     setIsValidAuthor(
       author.firstname !== '' &&
@@ -28,7 +31,7 @@ const AuthorForm = ({
     <ScrollView style={styles.root}>
       <Input
         style={styles.inputs}
-        label={evaProps => <Text {...evaProps}> First Name* :</Text>}
+        label={evaProps => <Text {...evaProps}> {t('author.firstname')}</Text>}
         value={author.firstname}
         onChangeText={text => {
           updateAuthor(text, 'firstname');
@@ -36,7 +39,7 @@ const AuthorForm = ({
       />
       <Input
         style={styles.inputs}
-        label={evaProps => <Text {...evaProps}> Last Name* :</Text>}
+        label={evaProps => <Text {...evaProps}> {t('author.lastname')}</Text>}
         value={author.lastname}
         onChangeText={text => {
           updateAuthor(text, 'lastname');
@@ -44,7 +47,9 @@ const AuthorForm = ({
       />
       <Input
         style={styles.inputs}
-        label={evaProps => <Text {...evaProps}> Description* :</Text>}
+        label={evaProps => (
+          <Text {...evaProps}> {t('author.description')}</Text>
+        )}
         value={author.description}
         multiline={true}
         numberOfLines={3}
@@ -54,7 +59,9 @@ const AuthorForm = ({
       />
       <Input
         style={styles.inputs}
-        label={evaProps => <Text {...evaProps}> Picture URL :</Text>}
+        label={evaProps => (
+          <Text {...evaProps}> {t('author.picture-url')}</Text>
+        )}
         value={author.picUrl}
         placeholder="https://..."
         onChangeText={text => {
