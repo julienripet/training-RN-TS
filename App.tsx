@@ -11,6 +11,7 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 
 import MainNavigator from './src/navigator/MainNavigator';
+import {Root as AlertRoot, Toast} from 'react-native-alert-notification';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -20,15 +21,22 @@ const App: React.FC = () => {
   };
 
   return (
-    <NavigationContainer>
-      <IconRegistry icons={EvaIconsPack} />
-      <ApplicationProvider {...eva} theme={isDarkMode ? eva.dark : eva.light}>
-        <SafeAreaView style={{...backgroundStyle, ...styles.root}}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          <MainNavigator />
-        </SafeAreaView>
-      </ApplicationProvider>
-    </NavigationContainer>
+    <AlertRoot
+      toastConfig={{
+        autoClose: 2500,
+      }}>
+      <NavigationContainer>
+        <IconRegistry icons={EvaIconsPack} />
+        <ApplicationProvider {...eva} theme={isDarkMode ? eva.dark : eva.light}>
+          <SafeAreaView style={{...backgroundStyle, ...styles.root}}>
+            <StatusBar
+              barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+            />
+            <MainNavigator />
+          </SafeAreaView>
+        </ApplicationProvider>
+      </NavigationContainer>
+    </AlertRoot>
   );
 };
 
