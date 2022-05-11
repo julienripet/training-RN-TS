@@ -18,12 +18,12 @@ const ListingAuthorsView = () => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
-  useFocusEffect(
-    useCallback(() => {
-      console.log('Launched Version 0.1');
-      dispatch(fetchAuthors());
-    }, [dispatch]),
-  );
+  const loadAuthors = useCallback(() => {
+    console.log('Launched Version 0.1');
+    dispatch(fetchAuthors());
+  }, [dispatch]);
+
+  useFocusEffect(loadAuthors);
 
   const authors = useAppSelector(state => state.author.list);
   const loadingAuthors = useAppSelector(state => state.author.loading);
@@ -46,7 +46,15 @@ const ListingAuthorsView = () => {
       />
       <Layout style={styles.background}>
         <Layout style={styles.body}>
-          {loadingAuthors ? <Spinner /> : <AuthorList authors={authors} />}
+          {loadingAuthors ? (
+            <Spinner />
+          ) : (
+            <AuthorList
+              authors={authors}
+              loadAuthors={loadAuthors}
+              loadingAuthors={loadingAuthors}
+            />
+          )}
         </Layout>
       </Layout>
     </>
