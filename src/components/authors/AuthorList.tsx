@@ -22,20 +22,14 @@ export default function AuthorList({
 
   return (
     <Layout style={styles.root}>
-      {authors?.length > 0 ? (
-        <List
-          refreshControl={
-            <RefreshControl
-              refreshing={loadingAuthors}
-              onRefresh={loadAuthors}
-            />
-          }
-          data={authors}
-          renderItem={renderItem}
-        />
-      ) : (
-        <Text>{t('author.none')} </Text>
-      )}
+      <List
+        refreshControl={
+          <RefreshControl refreshing={loadingAuthors} onRefresh={loadAuthors} />
+        }
+        data={authors}
+        renderItem={renderItem}
+        ListEmptyComponent={<Text>{t('author.none')} </Text>}
+      />
     </Layout>
   );
 }

@@ -1,4 +1,4 @@
-import {ScrollView, StyleSheet} from 'react-native';
+import {RefreshControl, ScrollView, StyleSheet} from 'react-native';
 import React, {useCallback} from 'react';
 import {
   Icon,
@@ -23,46 +23,48 @@ const DetailedAuthorView = ({route}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
-  useFocusEffect(
-    useCallback(() => {
-      dispatch(fetchAuthorById(route.params.id));
-      dispatch(fetchBooksByAuthorId(route.params.id));
-    }, [dispatch, route.params.id]),
-  );
+  const loadAuthorDetails = useCallback(() => {
+    dispatch(fetchAuthorById(route.params.id));
+    dispatch(fetchBooksByAuthorId(route.params.id));
+  }, [dispatch, route.params.id]);
+
+  useFocusEffect(loadAuthorDetails);
 
   const goToEditAuthor = () => {
     navigation.navigate('AuthorCreadit', {author: detailedAuthor});
   };
 
-  if (detailedAuthor && !loadingAuthor) {
-    return (
-      <Layout style={styles.root}>
-        <CustomTopNavigation
-          title={t('common.details')}
-          goBackBtn={true}
-          renderRightActions={
-            <TopNavigationAction
-              icon={<Icon name="edit-outline" />}
-              onPress={goToEditAuthor}
+  return (
+    <Layout style={styles.root}>
+      <CustomTopNavigation
+        title={t('common.details')}
+        goBackBtn={true}
+        renderRightActions={
+          <TopNavigationAction
+            icon={<Icon name="edit-outline" />}
+            onPress={goToEditAuthor}
+          />
+        }
+      />
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            onRefresh={loadAuthorDetails}
+            refreshing={loadingAuthor}
+          />
+        }>
+        {detailedAuthor && (
+          <>
+            <AuthorDetails detailedAuthor={detailedAuthor} />
+            <BookList
+              authorsBooks={authorsBooks}
+              authorId={detailedAuthor.id}
             />
-          }
-        />
-        <ScrollView>
-          <AuthorDetails detailedAuthor={detailedAuthor} />
-          <BookList authorsBooks={authorsBooks} authorId={detailedAuthor.id} />
-        </ScrollView>
-      </Layout>
-    );
-  } else {
-    return (
-      <>
-        <CustomTopNavigation title={t('common.details')} goBackBtn={true} />
-        <Layout style={styles.root}>
-          <Spinner />
-        </Layout>
-      </>
-    );
-  }
+          </>
+        )}
+      </ScrollView>
+    </Layout>
+  );
 };
 
 export default DetailedAuthorView;

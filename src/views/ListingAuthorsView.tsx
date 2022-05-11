@@ -46,15 +46,11 @@ const ListingAuthorsView = () => {
       />
       <Layout style={styles.background}>
         <Layout style={styles.body}>
-          {loadingAuthors ? (
-            <Spinner />
-          ) : (
-            <AuthorList
-              authors={authors}
-              loadAuthors={loadAuthors}
-              loadingAuthors={loadingAuthors}
-            />
-          )}
+          <AuthorList
+            authors={authors}
+            loadAuthors={loadAuthors}
+            loadingAuthors={loadingAuthors}
+          />
         </Layout>
       </Layout>
     </>
