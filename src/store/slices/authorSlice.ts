@@ -9,7 +9,7 @@ import {Author} from '../../types/authors.type';
 
 export interface AuthorState {
   list: Author[];
-  loading: Boolean;
+  loading: boolean;
   error: SerializedError | null;
   detailedAuthor: Author | null;
 }

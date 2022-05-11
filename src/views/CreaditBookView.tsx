@@ -7,13 +7,12 @@ import {Book} from '../types/books.type';
 import BookForm from '../components/books/BookForm';
 import {deleteBook, postBook, putBook} from '../services/books.service';
 import {useTranslation} from 'react-i18next';
-import {ALERT_TYPE, Dialog} from 'react-native-alert-notification';
 
 const CreaditBookView = ({route}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
 
-  const [isEdit, setIsEdit] = useState(!!route.params.book);
+  const [isEdit] = useState(!!route.params.book);
 
   const [isValidBook, setIsValidBook] = useState<Boolean>(false);
 

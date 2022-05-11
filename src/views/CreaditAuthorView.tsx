@@ -10,7 +10,7 @@ import {useTranslation} from 'react-i18next';
 const CreaditAuthorView = ({route}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
-  const [isEdit, setIsEdit] = useState(!!route.params.author);
+  const [isEdit] = useState(!!route.params.author);
 
   const confirmAuthorDelete = () => {
     Alert.alert(

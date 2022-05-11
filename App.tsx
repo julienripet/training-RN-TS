@@ -11,7 +11,7 @@ import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
 
 import MainNavigator from './src/navigator/MainNavigator';
-import {Root as AlertRoot, Toast} from 'react-native-alert-notification';
+import {Root as AlertRoot} from 'react-native-alert-notification';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
