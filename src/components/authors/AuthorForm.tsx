@@ -79,5 +79,5 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
   },
-  inputs: {marginVertical: 10},
+  inputs: {marginVertical: 10, maxHeight: 200},
 });

@@ -7,7 +7,14 @@
     "picture-url": "Picture URL :",
     "books": "Their Books:",
     "none": "No authors",
-    "authors": "Authors"
+    "authors": "Authors",
+    "delete": "Delete Author",
+    "confirmDelete": {
+      "title": "Confirm",
+      "body": "Are you sure you want to delete this author? Doing so will also delete their books.",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    }
   },
   "book": {
     "title": "Title* :",
@@ -15,7 +22,15 @@
     "cover-picture-url": "Cover Picture's URL* :",
     "year": "Year of writing:",
     "new-book": "New Book",
-    "details": "Book's details"
+    "details": "Book's details",
+    "delete": "Delete Book",
+    "confirmDelete": {
+      "title": "Confirm",
+      "body": "Are you sure you want to delete this book?",
+      "button": "Yes, delete it",
+      "confirm": "Confirm",
+      "cancel": "Cancel"
+    }
   },
   "common": {
     "error": "An error has occurred",

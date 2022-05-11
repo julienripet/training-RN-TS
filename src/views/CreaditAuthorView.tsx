@@ -1,19 +1,50 @@
 import {Alert, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
-import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
+import {Button, Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import AuthorForm from '../components/authors/AuthorForm';
-import {postAuthor, putAuthor} from '../services/authors.service';
+import {deleteAuthor, postAuthor, putAuthor} from '../services/authors.service';
 import {useNavigation} from '@react-navigation/native';
 import {useTranslation} from 'react-i18next';
 
 const CreaditAuthorView = ({route}) => {
   const navigation = useNavigation();
   const {t} = useTranslation();
+  const [isEdit, setIsEdit] = useState(!!route.params.author);
+
+  const confirmAuthorDelete = () => {
+    Alert.alert(
+      t('author.confirmDelete.title'),
+      t('author.confirmDelete.body'),
+      [
+        {
+          text: t('author.confirmDelete.cancel'),
+          style: 'cancel',
+        },
+        {
+          text: t('author.confirmDelete.confirm'),
+          style: 'destructive',
+          onPress: sendDelete,
+        },
+      ],
+    );
+  };
+
+  const sendDelete = async () => {
+    try {
+      let res = await deleteAuthor(author.id);
+      if (!res) {
+        throw new Error('noData');
+      }
+      navigation.navigate('AuthorsList');
+    } catch (error) {
+      Alert.alert(t('common.error'), error);
+    }
+  };
 
   const validateAuthor = async () => {
     try {
-      const res = route.params.author
+      const res = isEdit
         ? await putAuthor({author, id: author.id})
         : await postAuthor(author);
       if (!res) {
@@ -28,7 +59,7 @@ const CreaditAuthorView = ({route}) => {
   const [isValidAuthor, setIsValidAuthor] = useState(false);
 
   const [author, setAuthor] = useState(
-    route.params.author
+    isEdit
       ? route.params.author
       : {
           firstname: '',
@@ -56,6 +87,15 @@ const CreaditAuthorView = ({route}) => {
         author={author}
         setAuthor={setAuthor}
       />
+
+      {isEdit && (
+        <Button
+          style={styles.deleteBtn}
+          status="danger"
+          onPress={confirmAuthorDelete}>
+          {t('author.delete')}
+        </Button>
+      )}
     </Layout>
   );
 };
@@ -66,5 +106,8 @@ const styles = StyleSheet.create({
   root: {
     flex: 1,
     paddingBottom: 20,
+  },
+  deleteBtn: {
+    margin: 10,
   },
 });
