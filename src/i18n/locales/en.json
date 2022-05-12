@@ -14,7 +14,8 @@
       "body": "Are you sure you want to delete this author? Doing so will also delete their books.",
       "cancel": "Cancel",
       "confirm": "Confirm"
-    }
+    },
+    "edit-author": "Edit the author"
   },
   "book": {
     "title": "Title* :",
@@ -30,7 +31,8 @@
       "button": "Yes, delete it",
       "confirm": "Confirm",
       "cancel": "Cancel"
-    }
+    },
+    "edit-book": "Edit Book"
   },
   "common": {
     "error": "An error has occurred",

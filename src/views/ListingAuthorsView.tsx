@@ -2,12 +2,7 @@ import {StyleSheet} from 'react-native';
 import React, {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import AuthorList from '../components/authors/AuthorList';
-import {
-  Icon,
-  Layout,
-  Spinner,
-  TopNavigationAction,
-} from '@ui-kitten/components';
+import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import {fetchAuthors} from '../store/slices/authorSlice';
 import CustomTopNavigation from '../components/common/CustomTopNavigation';
 import {useFocusEffect, useNavigation} from '@react-navigation/native';

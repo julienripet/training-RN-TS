@@ -1,11 +1,6 @@
 import {RefreshControl, ScrollView, StyleSheet} from 'react-native';
 import React, {useCallback} from 'react';
-import {
-  Icon,
-  Layout,
-  Spinner,
-  TopNavigationAction,
-} from '@ui-kitten/components';
+import {Icon, Layout, TopNavigationAction} from '@ui-kitten/components';
 import {useAppDispatch, useAppSelector} from '../store/hooks';
 import {fetchAuthorById} from '../store/slices/authorSlice';
 import AuthorDetails from '../components/authors/AuthorDetails';

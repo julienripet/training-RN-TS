@@ -14,7 +14,8 @@
       "body": "Êtes-vous sûr de vouloir supprimer cet auteur? Cela supprimera également ses livres.",
       "cancel": "Annuler",
       "confirm": "Confirmer"
-    }
+    },
+    "edit-author": "Editer l'auteur"
   },
   "book": {
     "title": "Titre* :",
@@ -30,7 +31,8 @@
       "button": "Oui, le supprimer",
       "confirm": "Confirmer",
       "cancel": "Annuler"
-    }
+    },
+    "edit-book": "Editer le livre"
   },
   "common": {
     "error": "Une erreur est survenue",

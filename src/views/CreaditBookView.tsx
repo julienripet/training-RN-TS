@@ -72,7 +72,7 @@ const CreaditBookView = ({route}) => {
   return (
     <Layout style={styles.root}>
       <CustomTopNavigation
-        title={t('book.new-book')}
+        title={isEdit ? t('book.edit-book') : t('book.new-book')}
         goBackBtn={true}
         renderRightActions={
           <TopNavigationAction

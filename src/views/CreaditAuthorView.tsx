@@ -72,7 +72,7 @@ const CreaditAuthorView = ({route}) => {
   return (
     <Layout style={styles.root}>
       <CustomTopNavigation
-        title={t('author.authors')}
+        title={isEdit ? t('author.edit-author') : t('author.authors')}
         goBackBtn={true}
         renderRightActions={
           <TopNavigationAction
