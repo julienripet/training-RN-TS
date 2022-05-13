@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk';
 import authorReducer from './slices/authorSlice';
 import monitorReducersEnhancer from './enhancers/monitorReducer';
 import bookReducer from './slices/bookSlice';
+import reactotron from '../../ReactotronConfig';
 
 export const store = configureStore({
   reducer: {
@@ -13,7 +14,7 @@ export const store = configureStore({
 
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(logger, thunkMiddleware),
-  enhancers: [monitorReducersEnhancer],
+  enhancers: [monitorReducersEnhancer, reactotron.createEnhancer()],
   devTools: true,
 });
 
