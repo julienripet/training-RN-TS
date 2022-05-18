@@ -9,8 +9,8 @@ const CustomTopNavigation = ({
   renderRightActions,
 }: {
   title: string;
-  goBackBtn: Boolean | undefined;
-  renderRightActions?: JSX.Element | undefined;
+  goBackBtn: Boolean;
+  renderRightActions?: JSX.Element;
 }) => {
   const navigation = useNavigation();
   const navigateBack = () => {
@@ -23,12 +23,13 @@ const CustomTopNavigation = ({
       onPress={navigateBack}
     />
   );
+
   return (
     <TopNavigation
       title={title}
       alignment="center"
-      accessoryLeft={goBackBtn ? BackAction : <></>}
-      accessoryRight={renderRightActions ? renderRightActions : <></>}
+      accessoryLeft={goBackBtn && BackAction}
+      accessoryRight={renderRightActions && renderRightActions}
     />
   );
 };

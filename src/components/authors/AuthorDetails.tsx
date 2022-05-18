@@ -10,10 +10,8 @@ const AuthorDetails = ({detailedAuthor}: {detailedAuthor: Author}) => {
         <Text category="h3">
           {detailedAuthor.firstname} {detailedAuthor.lastname}
         </Text>
-        {detailedAuthor.picUrl ? (
+        {detailedAuthor.picUrl && (
           <Image source={{uri: detailedAuthor.picUrl}} style={styles.pic} />
-        ) : (
-          <></>
         )}
       </Layout>
       <Text category="c1">{detailedAuthor.description} </Text>
